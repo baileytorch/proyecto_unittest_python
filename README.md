@@ -1,6 +1,6 @@
 # proyecto_unittest_python
 Proyecto de creación de unidades de test con python y unittest
-
+<hr>
 <h3>🔹 Pruebas y depuración</h3>
 <ul>
   <li><b>pytest</b> → Para pruebas unitarias.
