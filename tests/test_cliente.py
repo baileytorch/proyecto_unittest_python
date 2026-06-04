@@ -16,6 +16,7 @@ class TestCliente(unittest.TestCase):
         )
 
         self.assertEqual(cliente.nombre, "Juan Perez")
+        self.assertNotEqual(cliente.nombre,"Hola")
         self.assertEqual(cliente.email, "juan@gmail.com")
         self.assertEqual(cliente.telefono, "987654321")
 
