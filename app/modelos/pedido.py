@@ -1,11 +1,35 @@
+from peewee import SQL,Model, AutoField, BooleanField, ForeignKeyField, DateTimeField, DecimalField
+from peewee_enum_field import EnumField
 
-class Pedido:
+from datetime import datetime
+from enum import Enum
 
-    def __init__(self, id_pedido, cliente_id, fecha, total):
-        self.id = id_pedido
-        self.cliente_id = cliente_id
-        self.fecha = fecha
-        self.total = total
+from datos.conexion import conectar
+from modelos.cliente import Cliente
+
+base_datos = conectar()
+
+class BaseModel(Model):
+    class Meta:
+        database = base_datos
+
+class EstadoPedido(Enum):
+    PEND = 'pendiente'
+    PROC = 'procesando'
+    ENV = 'enviado'
+    ENT = 'entregado'
+    CANC = 'cancelado'
+        
+class Pedido(BaseModel):
+    id_pedido = AutoField()
+    cliente_pedido = ForeignKeyField(Cliente, backref='pedidos')
+    fecha_pedido = DateTimeField(null=False, default=datetime.now())
+    total_pedido = DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    estado_pedido = EnumField(EstadoPedido, default=EstadoPedido.PEND)
+    pedido_habilitado = BooleanField(constraints=[SQL(True)])
+
+    class Meta:
+        table_name = 'pedidos'
 
     def __str__(self):
-        return f"Pedido {self.id} - Total: ${self.total}"
+        return f"Pedido {self.id_pedido} - Total: ${self.total_pedido}"

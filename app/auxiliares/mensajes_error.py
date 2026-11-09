@@ -1,0 +1,1 @@
+error_generico = 'Ha ocurrido un error:'

@@ -1,0 +1,2 @@
+from auxiliares.mensajes_error import error_generico
+from auxiliares.validaciones import validar_rut,validar_correo,validar_contrasenia_segura,validar_genero
