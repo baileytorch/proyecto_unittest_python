@@ -102,11 +102,6 @@ def validar_fecha_nacimiento(fecha_nacimiento):
         mensaje = 'Formato de fecha NO corresponde, ingrese nuevamente...'
         fecha_nacimiento = ''
     else:
-        try:
-            mensaje = 'Formato de fecha correcto.'
-            fecha_nacimiento = datetime.strptime(fecha_nacimiento, "%d/%m/%Y")
-        except ValueError:
-            mensaje = 'Fecha INVÁLIDA, ingrese nuevamente...'
-            fecha_nacimiento = ''
+        mensaje = 'Formato de fecha correcto'
             
     return fecha_nacimiento, mensaje
