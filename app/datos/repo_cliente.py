@@ -1,8 +1,5 @@
-from datos import base_datos
-from modelos import Cliente
-from auxiliares import error_generico
-
-database = base_datos()
+from ..modelos.cliente import Cliente
+from ..auxiliares import error_generico
 
 def listado_clientes_habilitados():
     clientes = Cliente.select().where(Cliente.cliente_habilitado == True)

@@ -1,7 +1,4 @@
-from datos import base_datos
-from modelos import Producto
-
-database = base_datos()
+from ..modelos.producto import Producto
 
 def listado_productos_habilitados():
     try:

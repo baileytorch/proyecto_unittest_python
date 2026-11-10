@@ -1,56 +1,110 @@
+from .pres_cliente import actualizar_cliente, ingresar_cliente, listado_clientes
+from .pres_detalle_pedido import (
+    actualizar_detalle_pedido,
+    ingresar_detalle_pedido,
+    listado_detalle_pedido_por_pedido,
+    listado_detalle_pedidos,
+)
+from .pres_pedido import (
+    actualizar_pedido,
+    ingresar_pedido,
+    listado_pedidos,
+    listado_pedidos_cliente,
+)
+from .pres_producto import actualizar_producto, ingresar_producto, listado_productos
 
-from negocio.cliente_service import ClienteService
-
-service = ClienteService()
 
 def iniciar_menu():
     while True:
-        print("\n=== SISTEMA DE CLIENTES ===")
-        print("1. Agregar cliente")
-        print("2. Listar clientes")
-        print("3. Salir")
+        print("\n=== SISTEMA DE GESTIÓN ===")
+        print("1. Clientes")
+        print("2. Productos")
+        print("3. Pedidos")
+        print("0. Salir")
 
-        opcion = input("Seleccione una opción: ")
-
-        if opcion == "1":
-            agregar_cliente()
-        elif opcion == "2":
-            listar_clientes()
-        elif opcion == "3":
+        opcion = input("Seleccione una opción: ").strip()
+        if opcion == "0":
             print("Saliendo del sistema...")
-            break
+            return
+        if opcion == "1":
+            menu_clientes()
+        elif opcion == "2":
+            menu_productos()
+        elif opcion == "3":
+            menu_pedidos()
         else:
-            print("Opción inválida")
+            print("Opción inválida.")
 
-def agregar_cliente():
-    try:
-        id_cliente = int(input("ID: "))
-        nombre = input("Nombre: ")
-        rut = input("RUT: ")
-        email = input("Email: ")
-        fecha_nacimiento = input("Fecha nacimiento: ")
-        telefono = input("Teléfono: ")
 
-        service.crear_cliente(
-            id_cliente,
-            nombre,
-            rut,
-            email,
-            fecha_nacimiento,
-            telefono
-        )
+def menu_clientes():
+    acciones = {
+        "1": ("Listar clientes", listado_clientes),
+        "2": ("Agregar cliente", ingresar_cliente),
+        "3": ("Modificar cliente", actualizar_cliente),
+    }
 
-        print("Cliente agregado correctamente")
+    while True:
+        print("\n=== MENÚ DE CLIENTES ===")
+        for numero, (etiqueta, _) in acciones.items():
+            print(f"{numero}. {etiqueta}")
+        print("0. Volver al menú principal")
 
-    except Exception as e:
-        print(f"Error: {e}")
+        opcion = input("Seleccione una opción: ").strip()
+        if opcion == "0":
+            return
+        accion = acciones.get(opcion)
+        if accion is None:
+            print("Opción inválida.")
+        else:
+            accion[1]()
 
-def listar_clientes():
-    clientes = service.obtener_clientes()
 
-    if not clientes:
-        print("No existen clientes")
-        return
+def menu_productos():
+    acciones = {
+        "1": ("Listar productos", listado_productos),
+        "2": ("Agregar producto", ingresar_producto),
+        "3": ("Modificar producto", actualizar_producto),
+    }
 
-    for cliente in clientes:
-        print(cliente)
+    while True:
+        print("\n=== MENÚ DE PRODUCTOS ===")
+        for numero, (etiqueta, _) in acciones.items():
+            print(f"{numero}. {etiqueta}")
+        print("0. Volver al menú principal")
+
+        opcion = input("Seleccione una opción: ").strip()
+        if opcion == "0":
+            return
+        accion = acciones.get(opcion)
+        if accion is None:
+            print("Opción inválida.")
+        else:
+            accion[1]()
+
+
+def menu_pedidos():
+    acciones = {
+        "1": ("Listar pedidos", listado_pedidos),
+        "2": ("Listar pedidos por cliente", listado_pedidos_cliente),
+        "3": ("Agregar pedido", ingresar_pedido),
+        "4": ("Modificar pedido", actualizar_pedido),
+        "5": ("Listar detalles de pedido", listado_detalle_pedidos),
+        "6": ("Listar detalles por pedido", listado_detalle_pedido_por_pedido),
+        "7": ("Agregar detalle a pedido", ingresar_detalle_pedido),
+        "8": ("Modificar detalle de pedido", actualizar_detalle_pedido),
+    }
+
+    while True:
+        print("\n=== MENÚ DE PEDIDOS ===")
+        for numero, (etiqueta, _) in acciones.items():
+            print(f"{numero}. {etiqueta}")
+        print("0. Volver al menú principal")
+
+        opcion = input("Seleccione una opción: ").strip()
+        if opcion == "0":
+            return
+        accion = acciones.get(opcion)
+        if accion is None:
+            print("Opción inválida.")
+        else:
+            accion[1]()

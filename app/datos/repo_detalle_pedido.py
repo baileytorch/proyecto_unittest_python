@@ -1,19 +1,16 @@
-from datos import base_datos
-from modelos import DetallePedido
-from modelos import Pedido
-
-database = base_datos()
+from ..modelos.detalle_pedido import DetallePedido
+from ..modelos.pedido import Pedido
 
 def listado_detalle_pedidos_habilitados():
     try:
-        detalle_pedidos = DetallePedido.select().where(DetallePedido.detalle_pedido_habilitado == True)
+        detalle_pedidos = DetallePedido.select().where(DetallePedido.habilitado == True)
         return detalle_pedidos
     except Exception as error:
         print(f'Ha ocurrido un error: {error}')
 
 def listado_detalle_pedidos_deshabilitados():
     try:
-        detalle_pedidos = DetallePedido.select().where(DetallePedido.detalle_pedido_habilitado == False)
+        detalle_pedidos = DetallePedido.select().where(DetallePedido.habilitado == False)
         return detalle_pedidos
     except Exception as error:
         print(f'Ha ocurrido un error: {error}')
@@ -45,6 +42,6 @@ def detalle_pedido_por_id(id):
         if detalle_pedido:
             return detalle_pedido
     except DetallePedido.DoesNotExist:
-        print('El detalle_pedido indicado NO existe.')
+        print('El Detalle de Pedido indicado NO existe.')
     except Exception as error:
         print(f'Ha ocurrido un error: {error}')

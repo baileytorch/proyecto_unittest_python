@@ -2,13 +2,11 @@ from peewee import SQL,Model, AutoField, BooleanField, DateField, CharField, Dat
 
 from datetime import datetime
 
-from datos.conexion import conectar
-
-base_datos = conectar()
+from ..datos.conexion import database
 
 class BaseModel(Model):
     class Meta:
-        database = base_datos
+        database = database
         
 class Cliente(BaseModel):
     id_cliente = AutoField()

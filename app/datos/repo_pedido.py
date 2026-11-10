@@ -1,8 +1,5 @@
-from datos import base_datos
-from modelos import Cliente
-from modelos import Pedido
-
-database = base_datos()
+from ..modelos.cliente import Cliente
+from ..modelos.pedido import Pedido
 
 def listado_pedidos_habilitados():
     try:

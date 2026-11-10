@@ -40,6 +40,8 @@ CREATE TABLE detalle_pedidos(
     id_detalle_pedido INTEGER AUTO_INCREMENT,
     id_pedido INTEGER NOT NULL,
     id_producto INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL DEFAULT 1,
+    precio_unitario DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     habilitado TINYINT NOT NULL DEFAULT 1,
 
     CONSTRAINT pk_detalle_pedidos PRIMARY KEY (id_detalle_pedido),

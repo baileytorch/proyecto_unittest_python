@@ -1,55 +1,77 @@
 # proyecto_unittest_python
 Proyecto de creación de unidades de test con python y unittest
-<hr>
-<h3>🔹 Pruebas y depuración</h3>
-<ul>
-  <li><b>pytest</b> → Para pruebas unitarias.
-    <pre><code>pip install pytest</code></pre>
-  </li>
-  <li><b>pylint</b> / <b>flake8</b> → Análisis estático y buenas prácticas de código.
-    <pre><code>pip install pylint flake8</code></pre>
-  </li>
-</ul>
 
-<p>
-Para que unittest reconozca los archivos y funciones de prueba, asegúrate de que los archivos comiencen con la palabra test_ (ej. test_funciones.py) y que los métodos dentro de tus clases de prueba también comiencen con test.
-</p>
+---
 
-<p>
-Para ejecutar todos los archivos de prueba (test) en un módulo o proyecto de Python utilizando unittest, puedes usar la terminal. El comando principal te permite descubrir y ejecutar automáticamente todas las pruebas.
-</p>
-<code>python -m unittest discover</code>
+### 🔹 Pruebas y depuración
 
-<p>
+- **pytest** → Para pruebas unitarias.
+
+  ```bash
+  pip install pytest
+  ```
+
+- **pylint** / **flake8** → Análisis estático y buenas prácticas de código.
+
+  ```bash
+  pip install pylint flake8
+  ```
+
+Para que unittest reconozca los archivos y funciones de prueba, asegúrate de que
+los archivos comiencen con la palabra `test_` (ej. `test_validaciones.py`) y
+que los métodos dentro de tus clases de prueba también comiencen con `test`.
+
+Para ejecutar todos los archivos de prueba (test) en un módulo o proyecto de
+Python utilizando unittest, puedes usar la terminal. El comando principal te
+permite descubrir automáticamente todas las pruebas.
+
+```bash
+python -m unittest discover
+```
+
 Una vez descubiertas las pruebas, se pueden ejecutar con el comando:
-</p>
-<code>pytest</code>
 
-<h4>Ejecutar un archivo de test específico</h4>
-<p>
-Para ejecutar un archivo de prueba (test) específico, puedes usar la terminal y ejecutar el siguiente comando:
-</p>
-<code>python -m unittest test_nombre_archivo</code>
+```bash
+pytest
+```
 
-<h4>Ejecutar una clase de test específica</h4>
-<p>
-Si tienes múltiples clases dentro de un mismo archivo de pruebas, puedes filtrar por la clase, mediante el terminal ejecutando el siguiente comando:
-</p>
-<code>python -m unittest test_nombre_archivo.NombreDeLaClase</code>
+#### Ejecutar un archivo de test específico
 
-<hr>
-<h3>📂 Instalación mediante <code>requirements.txt</code></h3>
+Para ejecutar un archivo de prueba (test) específico, puedes usar la terminal y
+ejecutar el siguiente comando:
 
-<p>
-Un archivo <code>requirements.txt</code>,  permite simplificar la instalación de dependencias, especificando librerías y versiones a utilizar en cada proyecto.
-</p>
+```bash
+python -m unittest test_nombre_archivo
+```
 
-<p>
-Para crear un archivo <code>requirements.txt</code>,  teniendo las dependencias YA instaladas, mediante el terminal, ejecutar el siguiente comando:
-  <pre><code>pip freeze > requirements.txt</code></pre>
-</p>
+#### Ejecutar una clase de test específica
 
-<p>
-Para ejecutar la instalación de todas las dependencias definidas previamente para cada proyecto, debemos crear un archivo <code>requirements.txt</code>,  y luego, mediante el terminal, navegar hasta la ubicación del archivo, para ejecutar el siguiente comando:
-  <pre><code>pip install -r requirements.txt</code></pre>
-</p>
+Si tienes múltiples clases dentro de un mismo archivo de pruebas, puedes filtrar
+por la clase, mediante el terminal ejecutando el siguiente comando:
+
+```bash
+python -m unittest test_nombre_archivo.NombreDeLaClase
+```
+
+---
+
+### 📂 Instalación mediante `requirements.txt`
+
+Un archivo `requirements.txt` permite simplificar la instalación de
+dependencias, especificando librerías y versiones a utilizar en cada proyecto.
+
+Para crear un archivo `requirements.txt`, teniendo las dependencias YA
+instaladas, mediante el terminal, ejecutar el siguiente comando:
+
+```bash
+pip freeze > requirements.txt
+```
+
+Para ejecutar la instalación de todas las dependencias definidas previamente
+para cada proyecto, debemos crear un archivo `requirements.txt`, y luego,
+mediante el terminal, navegar hasta la ubicación del archivo, para ejecutar el
+siguiente comando:
+
+```bash
+pip install -r requirements.txt
+```
